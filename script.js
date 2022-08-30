@@ -11,12 +11,24 @@ const COLORS = [
   "blue",
   "green",
   "orange",
-  "purple",
+  "aqua",
+  "yellow",
+  "yellow",
+  "black",
+  "black",
+  "fuchsia",
+  "fuchsia",
+  "brown",
+  "brown",
+  "lime",
+  "lime",
   "red",
   "blue",
   "green",
+  "indigo",
+  "indigo",
   "orange",
-  "purple"
+  "aqua"
 ];
 
 // here is a helper function to shuffle an array
@@ -83,16 +95,18 @@ function handleCardClick(event) {
 
     if(pairColor.length < 3){
       if (c==1){
-        setTimeout(() => {
-          this_div.style.backgroundColor = "white";     
-        }, 500)
+        firstDiv = this_div;
+        // setTimeout(() => {
+        //   this_div.style.backgroundColor = "white";     
+        // }, 500)
       }
 
       if (c==2){
+        secondDiv = this_div;
         if(pairColor[0]!=pairColor[1]){
           setTimeout(() => {
-            this_div.style.backgroundColor = "white";
-            secondDiv = this_div;
+            firstDiv.style.backgroundColor = "white";
+            secondDiv.style.backgroundColor = "white"; 
           }, 500)
         }
         else if ((pairColor[0]==pairColor[1])&&(pairID[0]!=pairID[1])){
@@ -105,8 +119,8 @@ function handleCardClick(event) {
         }
         else{
           setTimeout(() => {
-            this_div.style.backgroundColor = "white";
-            secondDiv = this_div;
+            firstDiv.style.backgroundColor = "white";
+            secondDiv.style.backgroundColor = "white"; 
           }, 500)
         }
         setTimeout(() => {
