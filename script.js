@@ -60,8 +60,15 @@ function createDivsForColors(colorArray) {
 // TODO: Implement this function!
 function handleCardClick(event) {
   // you can use event.target to see which element was clicked
+  let this_div = event.target;
   event.target.style.backgroundColor = event.target.className;
   console.log("you just clicked", event.target.className);
+  //let white_background = rgb(255,255,255);
+
+  setTimeout(() => {
+    this_div.style.backgroundColor = "white";
+  }, 1000)
+  //setTimeout(this_div.style.backgroundColor = none , 1000);
 }
 
 // when the DOM loads
