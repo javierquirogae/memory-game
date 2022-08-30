@@ -1,5 +1,9 @@
 const gameContainer = document.getElementById("game");
+let firstDiv;
+let secondDiv;
+let firstColor;
 let c = 0;
+let pair = [];
 const COLORS = [
   "red",
   "blue",
@@ -60,25 +64,45 @@ function createDivsForColors(colorArray) {
 // TODO: Implement this function!
 function handleCardClick(event) {
   let this_div = event.target;
+  
   c++;
   console.log(c);
   // you can use event.target to see which element was clicked
   if (c<3){
     event.target.style.backgroundColor = event.target.className;
+    pair.push(event.target.className);
     console.log("you just clicked", event.target.className);
-  }
-  if (c==1){
-    setTimeout(() => {
-      this_div.style.backgroundColor = "white";
-    }, 1000)
+    console.log(pair);
   }
 
-  if (c==2){
-    setTimeout(() => {
-      this_div.style.backgroundColor = "white";
-      c=0;
-    }, 1000)
+  if(pair.length<3){
+    if (c==1){
+      firstColor = event.target.className;
+      setTimeout(() => {
+        this_div.style.backgroundColor = "white";     
+      }, 1000)
+    }
+
+    if (c==2){
+      if(pair[0]!=pair[1]){
+        setTimeout(() => {
+          this_div.style.backgroundColor = "white";
+          secondDiv = this_div;
+        }, 1000)
+      }
+      else if (pair[0]==pair[1]){
+        let pair_divs = document.getElementsByClassName(firstColor);
+        for(let divs of pair_divs){
+          divs.style.backgroundColor = firstColor;
+        }
+      }
+      setTimeout(() => {
+        c=0;
+        pair = [];
+      }, 1000)
+    }
   }
+
 }
 
 // when the DOM loads
