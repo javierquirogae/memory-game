@@ -85,7 +85,7 @@ function handleCardClick(event) {
       if (c==1){
         setTimeout(() => {
           this_div.style.backgroundColor = "white";     
-        }, 1000)
+        }, 500)
       }
 
       if (c==2){
