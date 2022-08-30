@@ -93,7 +93,7 @@ function handleCardClick(event) {
           setTimeout(() => {
             this_div.style.backgroundColor = "white";
             secondDiv = this_div;
-          }, 1000)
+          }, 500)
         }
         else if ((pairColor[0]==pairColor[1])&&(pairID[0]!=pairID[1])){
           let pair_divs = document.getElementsByClassName(pairColor[0]);
@@ -107,13 +107,13 @@ function handleCardClick(event) {
           setTimeout(() => {
             this_div.style.backgroundColor = "white";
             secondDiv = this_div;
-          }, 1000)
+          }, 500)
         }
         setTimeout(() => {
           c = 0;
           pairColor = [];
           pairID = [];
-        }, 1000)
+        }, 500)
       }
     }
   }
