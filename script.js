@@ -5,6 +5,7 @@ let firstColor;
 let c = 0;
 let pairColor = [];
 let pairID = [];
+let doneList = [];
 const COLORS = [
   "red",
   "blue",
@@ -53,7 +54,7 @@ function createDivsForColors(colorArray) {
 
     // give it a class attribute for the value we are looping over
     newDiv.classList.add(color);
-    newDiv.setAttribute("id",Math.floor(Math.random() * 500));
+    newDiv.setAttribute("id",Math.floor(Math.random() * 5000));
     // call a function handleCardClick when a div is clicked on
     newDiv.addEventListener("click", handleCardClick);
 
@@ -65,54 +66,56 @@ function createDivsForColors(colorArray) {
 // TODO: Implement this function!
 function handleCardClick(event) {
   let this_div = event.target;
-  
-  c++;
-  console.log(c);
-  // you can use event.target to see which element was clicked
-  if (c<3){
-    event.target.style.backgroundColor = event.target.className;
-    pairColor.push(event.target.className);
-    pairID.push(event.target.id);
-    console.log("you just clicked", event.target.className);
-    console.log(pairColor);
-    console.log(pairID);
-  }
-
-  if(pairColor.length < 3){
-    if (c==1){
-      firstColor = event.target.className;
-      setTimeout(() => {
-        this_div.style.backgroundColor = "white";     
-      }, 1000)
+  console.log("you just clicked", this_div.className);
+  if (!doneList.includes(this_div.id)){
+    c++;
+    console.log(c);
+    // you can use event.target to see which element was clicked
+    if (c<3){
+      this_div.style.backgroundColor = this_div.className;
+      pairColor.push(this_div.className);
+      pairID.push(this_div.id);
+      console.log(pairColor);
+      console.log(pairID);
     }
 
-    if (c==2){
-      if(pairColor[0]!=pairColor[1]){
+    if(pairColor.length < 3){
+      if (c==1){
+        firstColor = this_div.className;
         setTimeout(() => {
-          this_div.style.backgroundColor = "white";
-          secondDiv = this_div;
+          this_div.style.backgroundColor = "white";     
         }, 1000)
       }
-      else if ((pairColor[0]==pairColor[1])&&(pairID[0]!=pairID[1])){
-        let pair_divs = document.getElementsByClassName(firstColor);
-        for(let divs of pair_divs){
-          divs.style.backgroundColor = firstColor;
+
+      if (c==2){
+        if(pairColor[0]!=pairColor[1]){
+          setTimeout(() => {
+            this_div.style.backgroundColor = "white";
+            secondDiv = this_div;
+          }, 1000)
         }
-      }
-      else{
+        else if ((pairColor[0]==pairColor[1])&&(pairID[0]!=pairID[1])){
+          let pair_divs = document.getElementsByClassName(firstColor);
+          for(let divs of pair_divs){
+            divs.style.backgroundColor = firstColor;
+          }
+          doneList.push(pairID[0]);
+          doneList.push(pairID[1]);
+        }
+        else{
+          setTimeout(() => {
+            this_div.style.backgroundColor = "white";
+            secondDiv = this_div;
+          }, 1000)
+        }
         setTimeout(() => {
-          this_div.style.backgroundColor = "white";
-          secondDiv = this_div;
+          c = 0;
+          pairColor = [];
+          pairID = [];
         }, 1000)
       }
-      setTimeout(() => {
-        c = 0;
-        pairColor = [];
-        pairID = [];
-      }, 1000)
     }
   }
-
 }
 
 // when the DOM loads
