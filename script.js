@@ -1,4 +1,8 @@
 const gameContainer = document.getElementById("game");
+const scoreH2 = document.getElementById("score");
+const bestH2 = document.getElementById("best");
+let best = parseInt(localStorage.getItem("best")) || 1000000000;
+let score = 0;
 let firstDiv;
 let secondDiv;
 let firstColor;
@@ -66,7 +70,7 @@ function createDivsForColors(colorArray) {
 
     // give it a class attribute for the value we are looping over
     newDiv.classList.add(color);
-    newDiv.setAttribute("id",Math.floor(Math.random() * 5000));
+    newDiv.setAttribute("id",Math.floor(Math.random() * 5000000));
     // call a function handleCardClick when a div is clicked on
     newDiv.addEventListener("click", handleCardClick);
 
@@ -77,6 +81,11 @@ function createDivsForColors(colorArray) {
 
 // TODO: Implement this function!
 function handleCardClick(event) {
+  if (COLORS.length>doneList.length){
+    score++;
+  }
+  scoreH2.innerText = `Your score : ${score} !`
+  
   let this_div = event.target;
   console.log("you just clicked", this_div.className);
   console.log(this_div.id);
@@ -123,17 +132,23 @@ function handleCardClick(event) {
             secondDiv.style.backgroundColor = "white"; 
           }, 500)
         }
-        setTimeout(() => {
-          c = 0;
-          pairColor = [];
-          pairID = [];
-        }, 500)
+        c = 0;
+        pairColor = [];
+        pairID = [];
       }
+    }
+  }
+  if (COLORS.length==doneList.length){
+    const finalScore = score;
+    scoreH2.innerText = `Your FINAL score is : ${finalScore} !  Refresh to reset !`
+    if(finalScore<best){
+      localStorage.setItem("best", finalScore);
+      bestH2.innerText = `Best score : ${finalScore} !`
     }
   }
 }
 
 // when the DOM loads
 createDivsForColors(shuffledColors);
-
+bestH2.innerText = `Best score : ${best} !   `
 /* */
