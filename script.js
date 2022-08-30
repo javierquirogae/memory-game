@@ -67,6 +67,8 @@ function createDivsForColors(colorArray) {
 function handleCardClick(event) {
   let this_div = event.target;
   console.log("you just clicked", this_div.className);
+  console.log(this_div.id);
+  console.log(doneList)
   if (!doneList.includes(this_div.id)){
     c++;
     console.log(c);
@@ -81,7 +83,6 @@ function handleCardClick(event) {
 
     if(pairColor.length < 3){
       if (c==1){
-        firstColor = this_div.className;
         setTimeout(() => {
           this_div.style.backgroundColor = "white";     
         }, 1000)
@@ -95,9 +96,9 @@ function handleCardClick(event) {
           }, 1000)
         }
         else if ((pairColor[0]==pairColor[1])&&(pairID[0]!=pairID[1])){
-          let pair_divs = document.getElementsByClassName(firstColor);
+          let pair_divs = document.getElementsByClassName(pairColor[0]);
           for(let divs of pair_divs){
-            divs.style.backgroundColor = firstColor;
+            divs.style.backgroundColor = pairColor[0];
           }
           doneList.push(pairID[0]);
           doneList.push(pairID[1]);
