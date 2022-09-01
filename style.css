@@ -1,6 +1,6 @@
 #game div {
   border: 1px solid black;
-  width: 15%;
+  width: 200px;
   height: 200px;
   margin: 10px;
   display: inline-block;
@@ -14,3 +14,12 @@ body {
 h1, h2{
   display: inline;
 }
+
+#reset:hover{
+  color: rgb(237, 12, 12);
+}
+#reset{
+  font-size: 40px;
+  color: rgb(79, 5, 5);
+}
+

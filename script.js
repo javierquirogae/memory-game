@@ -1,6 +1,7 @@
 const gameContainer = document.getElementById("game");
 const scoreH2 = document.getElementById("score");
 const bestH2 = document.getElementById("best");
+const reset = document.getElementById("reset");
 let best = parseInt(localStorage.getItem("best")) || 1000000000;
 let score = 0;
 let firstDiv;
@@ -31,6 +32,8 @@ const COLORS = [
   "green",
   "indigo",
   "indigo",
+  "tan",
+  "tan",
   "orange",
   "aqua"
 ];
@@ -141,11 +144,18 @@ function handleCardClick(event) {
   if (COLORS.length==doneList.length){
     const finalScore = score;
     scoreH2.innerText = `Your FINAL score is : ${finalScore} !  Refresh to reset !`
+    reset.innerText = "Click here to reset best score !";
+    reset.addEventListener("click", handleRestClick);
     if(finalScore<best){
       localStorage.setItem("best", finalScore);
-      bestH2.innerText = `Best score : ${finalScore} !`
+      bestH2.innerText = `Best score : ${finalScore} !`;
     }
   }
+}
+
+function handleRestClick(e){
+  localStorage.setItem("best", 1000000000);
+  location.reload();
 }
 
 // when the DOM loads
