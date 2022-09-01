@@ -19,7 +19,11 @@ h1, h2{
   color: rgb(237, 12, 12);
 }
 #reset{
-  font-size: 40px;
+  font-size: 30px;
   color: rgb(79, 5, 5);
+}
+
+#reset_div{
+  position:fixed; bottom:0;   
 }
 
