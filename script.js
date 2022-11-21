@@ -96,9 +96,6 @@ function handleCardClick(event) {
     if(pairColor.length < 3){
       if (c==1){
         firstDiv = this_div;
-        // setTimeout(() => {
-        //   this_div.style.backgroundColor = "white";     
-        // }, 500)
       }
 
       if (c==2){
