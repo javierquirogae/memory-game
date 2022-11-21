@@ -16,26 +16,14 @@ const COLORS = [
   "blue",
   "green",
   "orange",
-  "aqua",
   "yellow",
   "yellow",
   "black",
   "black",
-  "fuchsia",
-  "fuchsia",
-  "brown",
-  "brown",
-  "lime",
-  "lime",
   "red",
   "blue",
   "green",
-  "indigo",
-  "indigo",
-  "tan",
-  "tan",
   "orange",
-  "aqua"
 ];
 
 // here is a helper function to shuffle an array
